@@ -14,6 +14,13 @@ class Settings(BaseSettings):
     claude_model: str = "claude-sonnet-4-20250514"
     openai_model: str = "gpt-4o"
 
+    # Ollama (Local LLM) Config
+    ollama_base_url: str = "http://localhost:11434/v1"
+    ollama_model: str = "qwen2.5:7b"
+
+    # Default AI provider: "ollama", "claude", or "openai"
+    default_ai_provider: str = "ollama"
+
     # Enrichment APIs
     apollo_api_key: Optional[str] = None
 

@@ -45,7 +45,7 @@ function StakeholderDetail() {
     setProfiling(true)
     try {
       await profileStakeholder(stakeholder.id, {
-        ai_provider: 'claude',
+        ai_provider: 'ollama',
         include_need_analysis: true,
         include_gap_analysis: true,
         include_conversation_starters: true,
@@ -54,7 +54,7 @@ function StakeholderDetail() {
       const res = await getStakeholder(stakeholder.id)
       setStakeholder(res.data)
     } catch {
-      alert('Failed to generate profile. Check your API key configuration.')
+      alert('Failed to generate profile. Is Ollama running? (ollama serve)')
     }
     setProfiling(false)
   }
@@ -65,7 +65,7 @@ function StakeholderDetail() {
     try {
       const res = await generateOutreach({
         stakeholder_ids: [stakeholder.id],
-        ai_provider: 'claude',
+        ai_provider: 'ollama',
         tone: 'professional',
         message_type: 'initial_connect',
         channel: 'linkedin_message',
@@ -73,7 +73,7 @@ function StakeholderDetail() {
       const msg = res.data.results?.[0]?.message?.body
       setGeneratedMessage(msg || 'Message generated — check Outreach tab.')
     } catch {
-      alert('Failed to generate outreach. Check your API key configuration.')
+      alert('Failed to generate outreach. Is Ollama running? (ollama serve)')
     }
     setGenerating(false)
   }

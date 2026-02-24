@@ -45,7 +45,19 @@ def root():
 
 @app.get("/api/health")
 def health():
-    return {"status": "healthy"}
+    import httpx
+    ollama_ok = False
+    try:
+        r = httpx.get(f"{settings.ollama_base_url.replace('/v1', '')}/api/tags", timeout=2)
+        ollama_ok = r.status_code == 200
+    except Exception:
+        pass
+    return {
+        "status": "healthy",
+        "ai_provider": settings.default_ai_provider,
+        "ollama_connected": ollama_ok,
+        "ollama_model": settings.ollama_model,
+    }
 
 
 @app.get("/api/stats")

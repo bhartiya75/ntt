@@ -35,7 +35,7 @@ class GenerateOutreachRequest(BaseModel):
     stakeholder_ids: list[int]
     campaign_id: Optional[int] = None
     channel: str = "linkedin_message"
-    ai_provider: str = "claude"  # claude or openai
+    ai_provider: str = "ollama"  # claude or openai
     tone: str = "professional"  # professional, casual, thought_leader
     message_type: str = "initial_connect"  # initial_connect, follow_up, value_share, meeting_request
     sap_solutions: list[str] = []  # specific SAP solutions to reference
@@ -46,7 +46,7 @@ class GenerateOutreachRequest(BaseModel):
 class BulkGenerateRequest(BaseModel):
     """Request to generate outreach for a segment (1-to-many)."""
     campaign_id: int
-    ai_provider: str = "claude"
+    ai_provider: str = "ollama"
     tone: str = "professional"
     message_type: str = "initial_connect"
     custom_context: Optional[str] = None

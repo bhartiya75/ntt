@@ -82,7 +82,7 @@ class StakeholderResponse(StakeholderBase):
 
 class StakeholderProfileRequest(BaseModel):
     """Request to run AI profiling on a stakeholder."""
-    ai_provider: str = "claude"  # claude or openai
+    ai_provider: str = "ollama"  # ollama, claude, or openai
     include_need_analysis: bool = True
     include_gap_analysis: bool = True
     include_conversation_starters: bool = True
