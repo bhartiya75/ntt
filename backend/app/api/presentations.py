@@ -11,10 +11,11 @@ from app.models.company import Company
 from app.models.campaign import OutreachCampaign
 from app.schemas.presentation import GeneratePresentationRequest, PresentationResponse
 from app.services.ppt_generator import ppt_generator, OUTPUT_DIR
+from app.services.toyota_ai_ppt_generator import toyota_ai_generator
 
 router = APIRouter(prefix="/presentations", tags=["presentations"])
 
-VALID_TYPES = ["stakeholder_briefing", "company_analysis", "campaign_summary", "outreach_strategy"]
+VALID_TYPES = ["stakeholder_briefing", "company_analysis", "campaign_summary", "outreach_strategy", "toyota_ai_use_cases"]
 
 
 @router.post("/generate", response_model=PresentationResponse)
@@ -53,6 +54,9 @@ async def generate_presentation(
 
     elif request.type == "outreach_strategy":
         result = await ppt_generator.generate_outreach_strategy(db, request.title, request.ai_provider or "ollama")
+
+    elif request.type == "toyota_ai_use_cases":
+        result = await toyota_ai_generator.generate()
 
     return PresentationResponse(**{k: result[k] for k in ["filename", "download_url", "slides_count", "type"]})
 
