@@ -700,9 +700,9 @@ add_textbox(nextsteps_slide,
 # 13: Roadmap (15)
 # 14: Next Steps (16)
 # 15: Copyright (10)
-# (skip old closing slide 9)
+# 16: Old empty closing (9) — kept to avoid duplicate XML name collision
 
-desired_order = [0, 11, 1, 12, 2, 3, 13, 4, 5, 6, 7, 8, 14, 15, 16, 10]
+desired_order = [0, 11, 1, 12, 2, 3, 13, 4, 5, 6, 7, 8, 14, 15, 16, 10, 9]
 
 # Reorder by manipulating the XML slide list
 pres_elem = prs.part._element
