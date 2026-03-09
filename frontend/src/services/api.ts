@@ -71,6 +71,13 @@ export const importCSV = (file: File) => {
   })
 }
 
+// Presentations
+export const generatePresentation = (data: Record<string, unknown>) =>
+  api.post('/presentations/generate', data)
+
+export const listPresentations = () =>
+  api.get('/presentations/list')
+
 // Stats
 export const getStats = () => api.get('/stats')
 

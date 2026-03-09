@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import engine, Base
-from app.api import stakeholders, companies, campaigns, outreach, import_export
+from app.api import stakeholders, companies, campaigns, outreach, import_export, presentations
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -31,6 +31,7 @@ app.include_router(companies.router, prefix="/api")
 app.include_router(campaigns.router, prefix="/api")
 app.include_router(outreach.router, prefix="/api")
 app.include_router(import_export.router, prefix="/api")
+app.include_router(presentations.router, prefix="/api")
 
 
 @app.get("/")

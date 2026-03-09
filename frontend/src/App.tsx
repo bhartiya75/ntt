@@ -6,6 +6,7 @@ import Companies from './pages/Companies'
 import Campaigns from './pages/Campaigns'
 import Outreach from './pages/Outreach'
 import Import from './pages/Import'
+import Presentations from './pages/Presentations'
 
 const navItems = [
   { path: '/', label: 'Dashboard' },
@@ -14,6 +15,7 @@ const navItems = [
   { path: '/campaigns', label: 'Campaigns' },
   { path: '/outreach', label: 'Outreach' },
   { path: '/import', label: 'Import' },
+  { path: '/presentations', label: 'Presentations' },
 ]
 
 function App() {
@@ -59,6 +61,7 @@ function App() {
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/outreach" element={<Outreach />} />
           <Route path="/import" element={<Import />} />
+          <Route path="/presentations" element={<Presentations />} />
         </Routes>
       </main>
     </div>
