@@ -48,9 +48,7 @@ REPLACEMENTS = [
     ("freed per plant", "freed per depot"),
     # SAP data signals — India context
     ("dealership demand for vehicles and parts weeks and m", "dealership demand for vehicles and parts weeks ahead"),
-    # Industry context — insight bar (Toyota-specific)
-    ("SAP clients sitting on rich transactional data but lack the AI layer to turn it into predictive, autonomous decisions. This is the gap NTT DATA Business Solutions fills.",
-     "Toyota Australia runs SAP ECC6 with rich order, logistics and parts data — but lacks the AI layer to turn it into predictive, autonomous action. This is the gap NDBS fills."),
+    # Industry context insight bar — no longer needed since enhance_pptx.py now has Toyota AU text directly
     # Next steps — phone format
     ("[+91 XXXX XXXXXX]", "[+61 XXXX XXXXXX]"),
     # Generic SAP client references → Toyota

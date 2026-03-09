@@ -277,8 +277,8 @@ add_textbox(agenda_slide,
     font_size=SZ_SUBTITLE, bold=False, color=LIGHT_BLUE)
 
 agenda_items = [
-    ("01", "The SAP Supply Chain Opportunity", "Why your clients need to act now", MS_BLUE),
-    ("02", "Industry Context — Automotive Trends", "Macro forces reshaping supply chains", CYAN_ACCENT),
+    ("01", "The SAP Supply Chain Opportunity", "Why Toyota Australia should act now", MS_BLUE),
+    ("02", "Toyota AU — Supply Chain Challenges", "Real pain points across 275 dealerships", CYAN_ACCENT),
     ("03", "Our Approach & Architecture", "Three-layer intelligence: Data → AI → Action", GREEN),
     ("04", "Four AI Use Cases", "Demand · Inventory · Supply Planning · Logistics", AMBER),
     ("05", "The Agentic AI Differentiator", "Copilot orchestrating all domains", ORANGE),
@@ -307,22 +307,50 @@ for i, (num, title, desc, col) in enumerate(agenda_items):
         fill_color=col)
 
 
-# ── NEW SLIDE B: Industry Context (will be after slide 2 + agenda) ──
+# ── NEW SLIDE B: Industry Context — Toyota Australia Challenges ──
 industry_slide = create_blank_dark_slide(prs)
 add_textbox(industry_slide,
     left=Emu(609600), top=Emu(300000), width=Emu(10000000), height=Emu(600000),
-    text="Industry Context — Automotive Supply Chain",
+    text="Toyota Australia — Supply Chain Challenges",
     font_size=SZ_TITLE, bold=True, color=WHITE)
 add_textbox(industry_slide,
     left=Emu(609600), top=Emu(850000), width=Emu(10000000), height=Emu(350000),
-    text="Macro forces driving urgency for AI-powered supply chains",
+    text="Real challenges across your 275 dealerships that AI can solve today",
     font_size=SZ_SUBTITLE, bold=False, color=LIGHT_BLUE)
 
 trends = [
-    ("Chip Shortage Aftermath", "Global semiconductor crisis exposed single-source dependencies.\n3-year recovery timeline. OEMs now demand multi-tier visibility.", MS_BLUE),
-    ("EV Transition", "Battery supply chains are 5× more complex than ICE.\nNew BOM structures require completely different planning models.", GREEN),
-    ("Sustainability Mandates", "EU CSRD & CBAM regulations demand Scope 3 tracking.\nSupply chain carbon footprint visibility is now mandatory.", AMBER),
-    ("Nearshoring & China+1", "Manufacturers restructuring supplier base.\nDynamic network optimization required as geography shifts.", ORANGE),
+    ("Demand Volatility",
+     "RAV4 sales down 74% in early 2026\n"
+     "due to model transition gaps.\n\n"
+     "3–6 month wait times persist\n"
+     "across the range. 200K+ unit\n"
+     "target at risk without better\n"
+     "demand visibility.",
+     MS_BLUE),
+    ("Parts Forecasting\nGap",
+     "No retail inventory management\n"
+     "system across dealer network.\n\n"
+     "Cannot distinguish real demand\n"
+     "from stock replenishment.\n"
+     "Parts forecasting still relies\n"
+     "on Excel and manual overrides.",
+     GREEN),
+    ("Hybrid Supply\nCrunch",
+     "Hybrid demand surged 3× in\n"
+     "5 years — outstripping supply.\n\n"
+     "Aisin magnet & Denso inverter\n"
+     "bottlenecks. All components\n"
+     "shipped from Japan — logistics\n"
+     "delays compound the problem.",
+     AMBER),
+    ("Distribution\nComplexity",
+     "275 dealers across 8 states.\n"
+     "Vast geography from Darwin to\n"
+     "Melbourne adds transit time.\n\n"
+     "Model transitions (Fortuner\n"
+     "exit, new-gen RAV4 & HiLux)\n"
+     "need dynamic stock rebalancing.",
+     ORANGE),
 ]
 
 for i, (title, desc, col) in enumerate(trends):
@@ -335,10 +363,10 @@ for i, (title, desc, col) in enumerate(trends):
         left=Emu(x), top=Emu(1500000), width=Emu(2700000), height=Emu(60000),
         fill_color=col)
     add_textbox(industry_slide,
-        left=Emu(x + 150000), top=Emu(1650000), width=Emu(2400000), height=Emu(450000),
+        left=Emu(x + 150000), top=Emu(1650000), width=Emu(2400000), height=Emu(500000),
         text=title, font_size=SZ_BODY, bold=True, color=col)
     add_multiline_textbox(industry_slide,
-        left=Emu(x + 150000), top=Emu(2200000), width=Emu(2400000), height=Emu(2300000),
+        left=Emu(x + 150000), top=Emu(2250000), width=Emu(2400000), height=Emu(2250000),
         lines=[(line, SZ_TINY, False, LIGHT_BLUE) for line in desc.split('\n')],
         alignment=PP_ALIGN.LEFT)
 
@@ -352,7 +380,7 @@ add_textbox(industry_slide,
     font_size=SZ_BODY, bold=True, color=CYAN_ACCENT)
 add_textbox(industry_slide,
     left=Emu(2500000), top=Emu(5050000), width=Emu(9000000), height=Emu(600000),
-    text="SAP clients sitting on rich transactional data but lack the AI layer to turn it into predictive, autonomous decisions. This is the gap NTT DATA Business Solutions fills.",
+    text="Toyota AU's SAP ECC6 holds years of order, parts and logistics data — but no AI layer to predict, optimise and act autonomously. This is exactly what NDBS delivers.",
     font_size=SZ_SMALL, bold=False, color=NEAR_WHITE)
 
 
