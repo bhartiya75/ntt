@@ -391,24 +391,54 @@ add_textbox(industry_slide,
     text="Toyota AU's SAP ECC6 holds years of order, parts and logistics data — but no AI layer to predict, optimise and act autonomously. This is exactly what NDBS delivers.",
     font_size=SZ_SMALL, bold=False, color=NEAR_WHITE)
 
-# Sources footer
+# Sources footer with hyperlinks
 SZ_REF = Pt(7)
-source_lines = [
-    "[1] CarsGuide — Toyota wait times & RAV4 sales 2026",
-    "[2] CarsGuide — Toyota wait times in Australia 2025",
-    "[3] Automotive Logistics — Toyota 'holy grail' of predictability",
-    "[4] CBT News — Toyota struggles to meet surging hybrid demand",
-    "[5] FreightAmigo — Toyota recovery from chip shortages case study",
-    "[6] Toyota Australia — Dealer network & corporate overview",
+SOURCE_COLOR = RGBColor(0x88, 0x99, 0xAA)
+LINK_COLOR = RGBColor(0x50, 0xE6, 0xFF)
+
+# Source data: (label_prefix, link_text, url, description_suffix)
+sources_data = [
+    ("[1] ", "CarsGuide", "https://www.carsguide.com.au/car-news/toyotas-tough-start-to-2026-australias-best-selling-brand-facing-shortages-of-2026-rav4", " — Toyota wait times & RAV4 sales 2026, "),
+    ("[2] ", "CarsGuide", "https://www.carsguide.com.au/car-advice/toyota-wait-times-in-australia-2025-how-long-do-have-to-wait-for-every-model-97997", " — Toyota wait times in Australia 2025, "),
+    ("[3] ", "Automotive Logistics", "https://www.automotivelogistics.media/toyota-part-4-looking-for-the-holy-grail-of-predictability/12771.article", " — Toyota 'holy grail' of predictability, "),
+    ("[4] ", "CBT News", "https://www.cbtnews.com/toyota-struggles-to-meet-surging-hybrid-demand-amid-supply-constraints/", " — Toyota struggles to meet surging hybrid demand, "),
+    ("[5] ", "FreightAmigo", "https://www.freightamigo.com/blog/case-study-toyotas-recovery-from-chip-shortages", " — Toyota recovery from chip shortages case study,"),
+    ("[6] ", "Toyota Australia", "https://www.toyota.com.au/", " — Dealer network & corporate overview"),
 ]
+
 add_textbox(industry_slide,
     left=Emu(400000), top=Emu(5550000), width=Emu(5500000), height=Emu(200000),
     text="Sources:",
     font_size=SZ_REF, bold=True, color=LIGHT_BLUE)
-add_multiline_textbox(industry_slide,
-    left=Emu(400000), top=Emu(5700000), width=Emu(11400000), height=Emu(1000000),
-    lines=[(line, SZ_REF, False, RGBColor(0x88, 0x99, 0xAA)) for line in source_lines],
-    alignment=PP_ALIGN.LEFT)
+
+# Build sources textbox with clickable hyperlinks
+src_box = industry_slide.shapes.add_textbox(Emu(400000), Emu(5700000), Emu(11400000), Emu(1000000))
+src_tf = src_box.text_frame
+src_tf.word_wrap = True
+src_p = src_tf.paragraphs[0]
+src_p.alignment = PP_ALIGN.LEFT
+src_p.space_after = Pt(2)
+
+for prefix, link_text, url, suffix in sources_data:
+    # Add prefix like "[1] "
+    r_pre = src_p.add_run()
+    r_pre.text = prefix
+    r_pre.font.size = SZ_REF
+    r_pre.font.color.rgb = SOURCE_COLOR
+
+    # Add linked source name
+    r_link = src_p.add_run()
+    r_link.text = link_text
+    r_link.font.size = SZ_REF
+    r_link.font.color.rgb = LINK_COLOR
+    r_link.font.underline = True
+    r_link.hyperlink.address = url
+
+    # Add description suffix
+    r_suf = src_p.add_run()
+    r_suf.text = suffix
+    r_suf.font.size = SZ_REF
+    r_suf.font.color.rgb = SOURCE_COLOR
 
 
 # ── NEW SLIDE C: Technology Stack Architecture (after Data Integration) ──
