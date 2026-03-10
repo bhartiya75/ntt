@@ -282,9 +282,10 @@ agenda_items = [
     ("03", "Our Approach & Architecture", "Three-layer intelligence: Data → AI → Action", GREEN),
     ("04", "Four AI Use Cases", "Demand · Inventory · Supply Planning · Logistics", AMBER),
     ("05", "The Agentic AI Differentiator", "Copilot orchestrating all domains", ORANGE),
-    ("06", "ROI & Business Case", "Consolidated impact across all use cases", MS_BLUE),
-    ("07", "Implementation Roadmap", "12-week phased delivery plan", GREEN),
-    ("08", "Next Steps", "Discovery workshop & POC proposal", AMBER),
+    ("06", "Why NTT DATA Business Solutions?", "SAP + AI + Automotive domain expertise", CYAN_ACCENT),
+    ("07", "ROI & Business Case", "Consolidated impact across all use cases", MS_BLUE),
+    ("08", "Implementation Roadmap", "12-week phased delivery plan", GREEN),
+    ("09", "Next Steps", "Discovery workshop & POC proposal", AMBER),
 ]
 
 y_base = 1500000
@@ -320,36 +321,43 @@ add_textbox(industry_slide,
 
 trends = [
     ("Demand Volatility",
-     "RAV4 sales down 74% in early 2026\n"
-     "due to model transition gaps.\n\n"
+     "RAV4 sales down 74% in early\n"
+     "2026 due to model transition\n"
+     "gaps. [1]\n\n"
      "3–6 month wait times persist\n"
      "across the range. 200K+ unit\n"
      "target at risk without better\n"
-     "demand visibility.",
+     "demand visibility. [2]",
      MS_BLUE),
     ("Parts Forecasting\nGap",
      "No retail inventory management\n"
-     "system across dealer network.\n\n"
+     "system across dealer network.\n"
+     "[3]\n\n"
      "Cannot distinguish real demand\n"
      "from stock replenishment.\n"
      "Parts forecasting still relies\n"
-     "on Excel and manual overrides.",
+     "on Excel and manual overrides.\n"
+     "[3]",
      GREEN),
     ("Hybrid Supply\nCrunch",
      "Hybrid demand surged 3× in\n"
-     "5 years — outstripping supply.\n\n"
+     "5 years — outstripping supply.\n"
+     "[4]\n\n"
      "Aisin magnet & Denso inverter\n"
      "bottlenecks. All components\n"
      "shipped from Japan — logistics\n"
-     "delays compound the problem.",
+     "delays compound the problem.\n"
+     "[4][5]",
      AMBER),
     ("Distribution\nComplexity",
      "275 dealers across 8 states.\n"
      "Vast geography from Darwin to\n"
-     "Melbourne adds transit time.\n\n"
+     "Melbourne adds transit time.\n"
+     "[6]\n\n"
      "Model transitions (Fortuner\n"
      "exit, new-gen RAV4 & HiLux)\n"
-     "need dynamic stock rebalancing.",
+     "need dynamic stock rebalancing.\n"
+     "[1]",
      ORANGE),
 ]
 
@@ -372,16 +380,35 @@ for i, (title, desc, col) in enumerate(trends):
 
 # Bottom insight bar
 add_rounded_rect(industry_slide,
-    left=Emu(400000), top=Emu(5000000), width=Emu(11400000), height=Emu(700000),
+    left=Emu(400000), top=Emu(4900000), width=Emu(11400000), height=Emu(600000),
     fill_color=DARKER_CARD)
 add_textbox(industry_slide,
-    left=Emu(600000), top=Emu(5050000), width=Emu(1800000), height=Emu(400000),
+    left=Emu(600000), top=Emu(4930000), width=Emu(1800000), height=Emu(350000),
     text="Key Insight:",
     font_size=SZ_BODY, bold=True, color=CYAN_ACCENT)
 add_textbox(industry_slide,
-    left=Emu(2500000), top=Emu(5050000), width=Emu(9000000), height=Emu(600000),
+    left=Emu(2500000), top=Emu(4930000), width=Emu(9000000), height=Emu(500000),
     text="Toyota AU's SAP ECC6 holds years of order, parts and logistics data — but no AI layer to predict, optimise and act autonomously. This is exactly what NDBS delivers.",
     font_size=SZ_SMALL, bold=False, color=NEAR_WHITE)
+
+# Sources footer
+SZ_REF = Pt(7)
+source_lines = [
+    "[1] CarsGuide — Toyota wait times & RAV4 sales 2026",
+    "[2] CarsGuide — Toyota wait times in Australia 2025",
+    "[3] Automotive Logistics — Toyota 'holy grail' of predictability",
+    "[4] CBT News — Toyota struggles to meet surging hybrid demand",
+    "[5] FreightAmigo — Toyota recovery from chip shortages case study",
+    "[6] Toyota Australia — Dealer network & corporate overview",
+]
+add_textbox(industry_slide,
+    left=Emu(400000), top=Emu(5550000), width=Emu(5500000), height=Emu(200000),
+    text="Sources:",
+    font_size=SZ_REF, bold=True, color=LIGHT_BLUE)
+add_multiline_textbox(industry_slide,
+    left=Emu(400000), top=Emu(5700000), width=Emu(11400000), height=Emu(1000000),
+    lines=[(line, SZ_REF, False, RGBColor(0x88, 0x99, 0xAA)) for line in source_lines],
+    alignment=PP_ALIGN.LEFT)
 
 
 # ── NEW SLIDE C: Technology Stack Architecture (after Data Integration) ──
@@ -456,6 +483,79 @@ add_textbox(tech_slide,
     text="Microsoft Purview  ·  Azure AD / Entra ID  ·  RBAC  ·  Data Lineage  ·  Encryption at Rest & Transit",
     font_size=SZ_TINY, bold=False, color=LIGHT_BLUE,
     alignment=PP_ALIGN.CENTER)
+
+
+# ── NEW SLIDE D2: Why NTT DATA Business Solutions? ──
+why_slide = create_blank_dark_slide(prs)
+add_textbox(why_slide,
+    left=Emu(609600), top=Emu(300000), width=Emu(10000000), height=Emu(600000),
+    text="Why NTT DATA Business Solutions?",
+    font_size=SZ_TITLE, bold=True, color=WHITE)
+add_textbox(why_slide,
+    left=Emu(609600), top=Emu(850000), width=Emu(10000000), height=Emu(350000),
+    text="The only partner that connects your SAP data to autonomous AI action",
+    font_size=SZ_SUBTITLE, bold=False, color=LIGHT_BLUE)
+
+why_cards = [
+    ("SAP-Native\nExpertise",
+     "Your Challenge",
+     "SAP ECC6 data is locked\ninside legacy modules.",
+     "What We Bring",
+     "20+ years delivering SAP for\nautomotive OEMs. Pre-built\nODP/BAPI connectors for\nMM, SD, PP, QM — no\ncustom ABAP required.",
+     MS_BLUE),
+    ("Microsoft AI\nPlatform",
+     "Your Challenge",
+     "No analytics layer on top\nof SAP transactional data.",
+     "What We Bring",
+     "Microsoft Fabric + Azure AI\nFoundry. Medallion architecture\n(Bronze → Gold) with built-in\ngovernance. Copilot Studio\nfor natural-language access.",
+     GREEN),
+    ("Automotive\nDomain IP",
+     "Your Challenge",
+     "Generic AI tools don't\nunderstand auto supply chains.",
+     "What We Bring",
+     "Pre-trained models for parts\ndemand, dealer ordering\npatterns & logistics across\nAU geography. Calibrated on\nautomotive-specific KPIs.",
+     AMBER),
+    ("Rapid Time\nto Value",
+     "Your Challenge",
+     "Can't wait 12+ months for\na traditional BI programme.",
+     "What We Bring",
+     "12-week delivery: first value\nat Week 6. Proven accelerators\nfor SAP-to-Fabric ingestion.\nPOC in 6 weeks with live\nToyota AU data.",
+     ORANGE),
+]
+
+for i, (title, challenge_hdr, challenge, bring_hdr, bring, col) in enumerate(why_cards):
+    x = 400000 + i * 2900000
+    card_top = 1400000
+    card_h = 4200000
+    add_rounded_rect(why_slide,
+        left=Emu(x), top=Emu(card_top), width=Emu(2700000), height=Emu(card_h),
+        fill_color=DARK_CARD)
+    # Accent bar
+    add_rounded_rect(why_slide,
+        left=Emu(x), top=Emu(card_top), width=Emu(2700000), height=Emu(60000),
+        fill_color=col)
+    # Card title
+    add_textbox(why_slide,
+        left=Emu(x + 150000), top=Emu(card_top + 120000), width=Emu(2400000), height=Emu(500000),
+        text=title, font_size=SZ_BODY, bold=True, color=col)
+    # "Your Challenge" header
+    add_textbox(why_slide,
+        left=Emu(x + 150000), top=Emu(card_top + 650000), width=Emu(2400000), height=Emu(250000),
+        text=challenge_hdr, font_size=SZ_TINY, bold=True, color=AMBER)
+    # Challenge text
+    add_multiline_textbox(why_slide,
+        left=Emu(x + 150000), top=Emu(card_top + 900000), width=Emu(2400000), height=Emu(600000),
+        lines=[(line, SZ_TINY, False, NEAR_WHITE) for line in challenge.split('\n')],
+        alignment=PP_ALIGN.LEFT)
+    # "What We Bring" header
+    add_textbox(why_slide,
+        left=Emu(x + 150000), top=Emu(card_top + 1550000), width=Emu(2400000), height=Emu(250000),
+        text=bring_hdr, font_size=SZ_TINY, bold=True, color=GREEN)
+    # Bring text
+    add_multiline_textbox(why_slide,
+        left=Emu(x + 150000), top=Emu(card_top + 1800000), width=Emu(2400000), height=Emu(2200000),
+        lines=[(line, SZ_TINY, False, LIGHT_BLUE) for line in bring.split('\n')],
+        alignment=PP_ALIGN.LEFT)
 
 
 # ── NEW SLIDE D: Consolidated ROI (after Agentic AI slide) ──
@@ -710,6 +810,7 @@ add_textbox(nextsteps_slide,
 # 14: ROI (NEW)
 # 15: Roadmap (NEW)
 # 16: Next Steps (NEW)
+# 17: Why NTT (NEW)
 
 # Desired order:
 #  0: Cover
@@ -724,13 +825,14 @@ add_textbox(nextsteps_slide,
 #  9: Supply Planning (6)
 # 10: Logistics (7)
 # 11: Agentic AI (8)
-# 12: ROI (14)
-# 13: Roadmap (15)
-# 14: Next Steps (16)
-# 15: Copyright (10)
-# 16: Old empty closing (9) — kept to avoid duplicate XML name collision
+# 12: Why NTT (17)
+# 13: ROI (14)
+# 14: Roadmap (15)
+# 15: Next Steps (16)
+# 16: Copyright (10)
+# 17: Old empty closing (9) — kept to avoid duplicate XML name collision
 
-desired_order = [0, 11, 1, 12, 2, 3, 13, 4, 5, 6, 7, 8, 14, 15, 16, 10, 9]
+desired_order = [0, 11, 1, 12, 2, 3, 13, 4, 5, 6, 7, 8, 14, 15, 16, 17, 10, 9]
 
 # Reorder by manipulating the XML slide list
 pres_elem = prs.part._element
