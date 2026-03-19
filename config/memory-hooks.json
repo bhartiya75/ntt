@@ -1,0 +1,54 @@
+{
+  "description": "Session lifecycle hooks for NTT project memory persistence (Layer 4)",
+  "documentation": "See backend/AI-Agent-Memory-Persistence-Guide.md and Research-Paper-AI-Agent-Memory-Persistence.md",
+  "hooks": {
+    "SessionStart": [
+      {
+        "description": "Restore memory context from claude-flow at session start",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_RESTORE] Call memory_search with namespace=ntt to restore project context. Key memories: project-identity, progress-completed-work, client-seatrium, client-toyota-australia, data-consolidated-le-apac. Also read docs/MEMORY.md for full context.'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "description": "Persist session learnings before exit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_SAVE] Session ending. Use memory_store with namespace=ntt to persist: (1) any new decisions made, (2) progress updates, (3) gotchas discovered, (4) new client info. Update docs/MEMORY.md if stable insights changed.'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "description": "Save context before compression discards it",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_COMPACT] Context compression imminent. Use memory_store with namespace=ntt to save any in-progress work context before it is lost.'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "memory_namespaces": {
+    "ntt": "Project-specific memories (decisions, patterns, gotchas, progress, clients)",
+    "default": "General claude-flow system memories"
+  },
+  "memory_types": {
+    "decision": "Why X was chosen over Y — prefix key with 'decision-'",
+    "pattern": "Recurring conventions — prefix key with 'pattern-'",
+    "gotcha": "Pitfalls and warnings — prefix key with 'gotcha-'",
+    "progress": "What is done / in-flight — prefix key with 'progress-'",
+    "client": "Client/account information — prefix key with 'client-'",
+    "data": "Data file descriptions — prefix key with 'data-'"
+  }
+}

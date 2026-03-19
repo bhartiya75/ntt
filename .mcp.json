@@ -18,6 +18,16 @@
       },
       "autoStart": false
     },
+    "memento": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@iachilles/memento@latest"
+      ],
+      "env": {
+        "MEMORY_DB_PATH": "/home/user/.claude/memory-db/memento.db"
+      }
+    },
     "jcodemunch": {
       "command": "jcodemunch-mcp",
       "args": [],
