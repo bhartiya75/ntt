@@ -67,6 +67,11 @@
             "type": "command",
             "command": "node .claude/helpers/auto-memory-hook.mjs import",
             "timeout": 8000
+          },
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_RESTORE] Read docs/MEMORY.md for project context. Then call memory_search with namespace=ntt to restore structured memories (decisions, clients, progress, gotchas).'",
+            "timeout": 5000
           }
         ]
       }
@@ -89,6 +94,11 @@
             "type": "command",
             "command": "node .claude/helpers/auto-memory-hook.mjs sync",
             "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_SAVE] Session ending. Use memory_store(namespace=ntt) to persist any new decisions, progress, gotchas, or client info discovered this session. Update docs/MEMORY.md if stable context changed.'",
+            "timeout": 5000
           }
         ]
       }
@@ -105,6 +115,11 @@
             "type": "command",
             "command": "node .claude/helpers/hook-handler.cjs session-end",
             "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_COMPACT] Context compression imminent. Use memory_store(namespace=ntt) to save any in-progress work context before it is lost.'",
+            "timeout": 5000
           }
         ]
       },
@@ -119,6 +134,11 @@
             "type": "command",
             "command": "node .claude/helpers/hook-handler.cjs session-end",
             "timeout": 6000
+          },
+          {
+            "type": "command",
+            "command": "echo '[MEMORY_COMPACT] Context compression imminent. Use memory_store(namespace=ntt) to save any in-progress work context before it is lost.'",
+            "timeout": 5000
           }
         ]
       }
